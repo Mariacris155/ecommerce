@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import Producto from "./Componentes/Producto"
 import './App.css';
+import {Container, Row, Col, Navbar, Nav} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Cabecera from "./Componentes/Cabecera";
+import Footer from "./Componentes/Footer";
+import {useEffect, useState} from 'react'
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import Productos from "./Componentes/Producto";
+import Categoriasjew from "./Componentes/Categoriasjew";
+
+
+
 
 function App() {
+
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    
+  
+    <Cabecera/> 
+  
+  <Routes>
+  <Route path="/" element={<Productos/>}/>
+  <Route path="/joyeria" element={<Categoriasjew/>}/>
+  </Routes>
+  
+    <Footer/>
+  
+  </BrowserRouter>
   );
 }
 
