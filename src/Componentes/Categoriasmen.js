@@ -4,13 +4,13 @@ import Button from 'react-bootstrap/Button';
 
 
 
-function Categoriasjew({setId})  {
+function Categoriasmen({setId})  {
     let [categorias, setCategorias] =useState ([])
     let [loading, setLoading] =useState ()
 
  useEffect( () => {
 setLoading(true)
- fetch('https://fakestoreapi.com/products/category/jewelery')
+ fetch("https://fakestoreapi.com/products/category/men's clothing")
 .then(res=>res.json())
 .then(datos=>{setCategorias(datos)})
 setLoading(false)
@@ -40,7 +40,7 @@ if (loading) {
                             </Card.Text>
 
                             <Button variant="success" onClick={(e) => setId(e.target.value)} value={producto.id}>Añadir</Button>
-                        </Card.Body>
+                            </Card.Body>
                     </Card>
                 )
             })}
@@ -50,4 +50,4 @@ if (loading) {
 }
 }
 
-export default Categoriasjew;
+export default Categoriasmen;

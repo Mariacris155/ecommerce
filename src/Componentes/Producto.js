@@ -4,9 +4,13 @@ import Button from 'react-bootstrap/Button';
 
 
 
-function Productos()  {
+function Productos({setId})  {
+    
     let [datos, setDatos] =useState ([])
     let [loading, setLoading] =useState ()
+
+
+    
 
  useEffect( () => {
 setLoading(true)
@@ -15,7 +19,6 @@ setLoading(true)
 .then(datos=>{setDatos(datos)})
 setLoading(false)
  }, [])
-
 
 
     if (loading) {
@@ -37,10 +40,10 @@ setLoading(false)
                                     {producto.description}
                                 </Card.Text>
                                 <Card.Text>
-                                    {producto.price}
+                                    {producto.price}€
                                 </Card.Text>
 
-                                <Button variant="success">Añadir</Button>
+                                <Button variant="success" onClick={(e) => setId(e.target.value)} value={producto.id}>Añadir</Button>
                             </Card.Body>
                         </Card>
                     )
