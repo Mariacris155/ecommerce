@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
-import Formulario from './Formulario';
+import { Link } from 'react-router-dom';
 
 
 function Carrito({ id, setId }) {
@@ -11,6 +10,7 @@ function Carrito({ id, setId }) {
     let [loading, setLoading] = useState()
     let [erase, setErase] = useState('');
     let [total, setTotal] = useState(0)
+
 
 
     useEffect(() => {
@@ -30,20 +30,19 @@ function Carrito({ id, setId }) {
                                     } else { return productoAgregado }
                                 })
                             )
-                        } else {
-                            setEnCarrito([...enCarrito, datos])
-                        }
+                        } else {setEnCarrito([...enCarrito, datos])}
+                        
                     }
-                }
-
-                )
+                }).catch(err => alert(`${err}, intentalo en otro momento`))
             setLoading(false);
+           
 
             setId("")
 
         }
     }, [id, enCarrito, erase])
 
+    console.log(enCarrito)
 
     //Borrar
     useEffect(() => {
@@ -61,9 +60,12 @@ function Carrito({ id, setId }) {
         setTotal(total)
     }, [enCarrito])
 
+    if (loading) {
+        return <h1>Cargando...</h1>
+    } else {
 
-    return (
-        
+        return (
+
             <div className='listaCarrito'>
                 {enCarrito.map((producto, index) => {
                     return (
@@ -88,15 +90,15 @@ function Carrito({ id, setId }) {
                     <Card.Text>
                         <h1>{total}€</h1>
                     </Card.Text>
-                    
-                    <Button variant="success" onClick={(e) => setTotal(e.target.value)} value={total}>Comprar</Button>
+                    <Button as={Link} to="/formulario"variant="success">Comprar</Button>
                 </div>
             </div>
-            
-            
-        
 
-    )
+
+
+
+        )
+    }
 
 }
 export default Carrito

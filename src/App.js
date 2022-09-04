@@ -13,13 +13,15 @@ import Categoriasmen from "./Componentes/Categoriasmen";
 import Categoriaswom from "./Componentes/Categoriaswom";
 import Carrito from "./Componentes/Carrito"
 import Formulario from "./Componentes/Formulario";
+import Busqueda from "./Componentes/Buscar";
 
 
 function App() {
 
  let [id, setId] = useState ('')
  let [busqueda, setBusqueda] = useState ([])
- let [total, setTotal] = useState ('')
+ let [total, setTotal] = useState(0)
+ 
 
 
 
@@ -29,18 +31,19 @@ function App() {
     
   
     <Cabecera/> 
-  
+    <Busqueda setId={setId}/>
   <Routes>
   <Route path="/" element={<Productos setId={setId}/>}/>
-  <Route path="/joyeria" element={<Categoriasjew/>}/>
-  <Route path="/electronica" element={<Categoriastec/>}/>
-  <Route path="/ropaMujer" element={<Categoriaswom/>}/>
-  <Route path="/ropaHombre" element={<Categoriasmen/>}/>
+  <Route path="/joyeria" element={<Categoriasjew setId={setId}/>}/>
+  <Route path="/electronica" element={<Categoriastec setId={setId}/>}/>
+  <Route path="/ropaMujer" element={<Categoriaswom setId={setId}/>}/>
+  <Route path="/ropaHombre" element={<Categoriasmen setId={setId}/>}/>
+  {/* <Route path= "/carrito" element= {} /> Carrito estaba aqui dentro pero si lo meto se me rompe la*/}
+  <Route path= "/formulario" element={<Formulario /* total={total} */ />}/>
   </Routes>
-
-    <Carrito id={id} setId={setId}/>
-
-    <Formulario id={total} setId={setTotal}/>
+  
+  <Carrito id={id} setId={setId} />
+    
     
     <Footer/>
   

@@ -6,28 +6,15 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
+import Card from 'react-bootstrap/Card';
 
-function Cabecera(setId) {
-  let [busqueda, setBusqueda] = useState([])
-  let [data, setData] = useState('')
-  let [loading, setLoading] = useState()
+
+function Cabecera() {
+  
+  
 
   // hacer fetch con productos para compararlos con lo que hay en productos y entonces 
-  /* useEffect(() => {
-    setLoading(true)
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(datos => { setBusqueda(datos) })
-    setLoading(false)
-  }, [])
- */
-  /* useEffect(() => {
-    if (busqueda !== "") {
-      busqueda.map((setId))
-    
-      
-    }
-  }, [busqueda]) */
+  
   
 
 
@@ -45,7 +32,7 @@ function Cabecera(setId) {
             />{' '}ChimueloCompany</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/" >Home</Nav.Link>
-            <NavDropdown title="Productos" id="navbarScrollingDropdown">
+            <NavDropdown title="Categorias" id="navbarScrollingDropdown">
               <NavDropdown.Item as={Link} to="/electronica">
                 Electronica
               </NavDropdown.Item>
@@ -62,21 +49,12 @@ function Cabecera(setId) {
             </NavDropdown>
             <Nav.Link as={Link} to="/carrito">Carrito</Nav.Link>
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Busca tu producto"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success" value={busqueda}
-              onClick={(e) => {
-               
-              }}>Buscar</Button>
-          </Form>
+          
+      
         </Container>
       </Navbar>
       <br />
+
     </>
   );
 }

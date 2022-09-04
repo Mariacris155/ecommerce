@@ -2,8 +2,8 @@ import { useState } from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function Formulario(total, setTotal) {
-
+function Formulario(total,setTotal) {
+  
    let [email, setEmail] = useState("")
    let [nombre, setNombre] = useState("")
    let [apellidos, setApellidos] = useState("")
@@ -11,7 +11,7 @@ function Formulario(total, setTotal) {
    let [calle, setCalle] = useState("")
    let [piso, setPiso] = useState("")
    let [telefono, setTelefono] = useState("")
-   let [init, setInit] = useState([
+   let [init, setInit] = useState(
       {
          email: "",
 
@@ -25,7 +25,7 @@ function Formulario(total, setTotal) {
          },
          telefono: ""
       }
-   ])
+   )
 
 
    function enviarFormulario() {
@@ -46,10 +46,11 @@ function Formulario(total, setTotal) {
 
       if (email !== "" &&  nombre !== "" && apellidos !== "" && ciudad !== "" && calle !== "" && piso !== "" && telefono !== "") {
          alert("En breve recibiras un correo de confirmación")
-         console.log(JSON.stringify(init))
+         JSON.stringify(init)
+         
 
       } else {
-         alert("tTodos los campos son obligatorios")
+         alert("Por favor rellena todos los campos")
       }
    }
 
@@ -59,6 +60,9 @@ function Formulario(total, setTotal) {
             <h3>Datos de facturación</h3>
 
             <Form>
+            <Form.Text className="text-muted">
+                 {/*  Tu compra es de {/* {total}€ En realidad queria poner tambien el total pero se rompe la pagina*/} 
+               </Form.Text>
                <Form.Text className="text-muted">
                   No compartiremos tus datos con nadie.
                </Form.Text>
