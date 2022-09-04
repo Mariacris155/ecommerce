@@ -1,29 +1,29 @@
 import { useState } from "react"
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
- function Formulario() {
+function Formulario(total, setTotal) {
 
    let [email, setEmail] = useState("")
-   let [usuario, setUsuario] = useState("")
-   let [password, setPassword] = useState("")
    let [nombre, setNombre] = useState("")
    let [apellidos, setApellidos] = useState("")
    let [ciudad, setCiudad] = useState("")
    let [calle, setCalle] = useState("")
+   let [piso, setPiso] = useState("")
    let [telefono, setTelefono] = useState("")
    let [init, setInit] = useState([
       {
          email: "",
-         username: "",
-         password: "",
+
          name: {
-            firstname: "",
-            lastname: ""
+            nombre: "",
+            apellidos: ""
          },
-         address: {
-            city: "",
-            street: ""
+         direccion: {
+            ciudad: "",
+            calle: ""
          },
-         phone: ""
+         telefono: ""
       }
    ])
 
@@ -32,23 +32,22 @@ import { useState } from "react"
       setInit([
          {
             email: email,
-            username: usuario,
-            password: password,
             name: {
-               firstname: nombre,
-               lastname: apellidos
+               nombre: nombre,
+               apellidos: apellidos
             },
             address: {
-               city: ciudad,
-               street: calle
+               ciudad: ciudad,
+               calle: calle,
+               piso: piso
             },
-            phone: telefono
+            telefono: telefono
          }])
 
-      if (email !== "" && usuario !== "" && password !== "" && nombre !== "" && apellidos !== "" && ciudad !== "" && calle !== "" && telefono !== "") {
+      if (email !== "" &&  nombre !== "" && apellidos !== "" && ciudad !== "" && calle !== "" && piso !== "" && telefono !== "") {
          alert("En breve recibiras un correo de confirmación")
          console.log(JSON.stringify(init))
-         
+
       } else {
          alert("tTodos los campos son obligatorios")
       }
@@ -56,80 +55,63 @@ import { useState } from "react"
 
    return (
       <div className="container">
-         <div className="contact_form">
-            <div className="formulario">
-               <h3>Formulario de registro</h3>
+         <div className="formulario">
+            <h3>Datos de facturación</h3>
 
-               <p>
-                  <label className="colocar_email">email
-                     <span className="obligatorio">*</span>
-                  </label>
-                  <input value={email}
-                     onChange={(e) => (setEmail((e.target.value)))} type="email" id="email" placeholder="Escribe tu email" required />
-               </p>
+            <Form>
+               <Form.Text className="text-muted">
+                  No compartiremos tus datos con nadie.
+               </Form.Text>
+               <Form.Group className="mb-1" controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type="email" placeholder="Enter email"
+                     onChange={(e) => (setEmail((e.target.value)))} value={email} />
+               </Form.Group>
 
-               <p>
-                  <label className="colocar_usuario">Usuario
-                     <span className="obligatorio">*</span>
-                  </label>
-                  <input value={usuario}
-                     onChange={(e) => (setUsuario((e.target.value)))} type="text" placeholder="Escribe tu usuario" required />
-               </p>
-               <p>
-                  <label className="colocar_contraseña">Contraseña
-                     <span className="obligatorio">*</span>
-                  </label>
-                  <input value={password}
-                     onChange={(e) => (setPassword((e.target.value)))} type="password" placeholder="Escribe tu contraseña" required />
-               </p>
+               <Form.Group className="mb-2" controlId="formBasicName">
+                  <Form.Label>Nombre</Form.Label>
+                  <Form.Control type="nombre" placeholder="Nombre"
+                     onChange={(e) => (setNombre((e.target.value)))} value={nombre} />
+               </Form.Group>
 
-               <p>
-                  <label className="colocar_nombre">Nombre
-                  </label>
-                  <input value={nombre}
-                     onChange={(e) => (setNombre((e.target.value)))} type="text" placeholder="Escribe tu nombre" required />
-               </p>
+               <Form.Group className="mb-3" controlId="formBasicApellido">
+                  <Form.Label>Apellido</Form.Label>
+                  <Form.Control type="apellidos" placeholder="Apellido"
+                     onChange={(e) => (setApellidos((e.target.value)))} value={apellidos} />
+               </Form.Group>
 
-               <p>
-                  <label className="colocar_apellidos">Apellidos
-                     <span className="obligatorio">*</span>
-                  </label>
-                  <input value={apellidos}
-                     onChange={(e) => (setApellidos((e.target.value)))} type="text" placeholder="Escribe tus apellidos" required />
-               </p>
+               <Form.Group className="mb-4" controlId="formBasicCiudad">
+                  <Form.Label>Ciudad</Form.Label>
+                  <Form.Control type="ciudad" placeholder="Ciudad"
+                     onChange={(e) => (setCiudad((e.target.value)))} value={ciudad} />
+               </Form.Group>
 
-               <p>
-                  <label className="colocar_ciudad">Ciudad
-                     <span className="obligatorio">*</span>
-                  </label>
-                  <input value={ciudad}
-                     onChange={(e) => (setCiudad((e.target.value)))} type="text" placeholder="Escribe tu ciudad" required />
-               </p>
-               <p>
-                  <label className="colocar_calle">Calle
-                     <span className="obligatorio">*</span>
-                  </label>
-                  <input value={calle}
-                     onChange={(e) => (setCalle((e.target.value)))} type="text" placeholder="Escribe tu calle" required />
-               </p>
+               <Form.Group className="mb-5" controlId="formBasicCalle">
+                  <Form.Label>Calle</Form.Label>
+                  <Form.Control type="calle" placeholder="Calle"
+                     onChange={(e) => (setCalle((e.target.value)))} value={calle} />
+               </Form.Group>
 
-               <p>
-                  <label className="colocar_Telefono">Telefono
-                     <span className="obligatorio">*</span>
-                  </label>
-                  <input value={telefono}
-                     onChange={(e) => (setTelefono((e.target.value)))} type="phone" id="mensaje" placeholder="Escribe tu telefono" required />
-               </p>
+               <Form.Group className="mb-6" controlId="formBasicPiso">
+                  <Form.Label>Piso</Form.Label>
+                  <Form.Control type="piso" placeholder="Piso"
+                     onChange={(e) => (setPiso((e.target.value)))} value={piso} />
+               </Form.Group>
 
-               <button onClick={() => enviarFormulario()} type="submit"><p>Enviar</p></button>
-
-               <p className="aviso">
-                  <span className="obligatorio"> * </span>los campos son obligatorios.
-               </p>
+               <Form.Group className="mb-7" controlId="formBasicTelefono">
+                  <Form.Label>Telefono</Form.Label>
+                  <Form.Control type="telefono" placeholder="Telefono"
+                     onChange={(e) => (setTelefono((e.target.value)))} value={telefono} />
+               </Form.Group>
 
 
-            </div>
+               <Button onClick={() => enviarFormulario()} variant="primary" type="submit">
+                  Enviar
+               </Button>
+            </Form>
+
          </div>
+
       </div>
 
    )

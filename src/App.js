@@ -12,11 +12,14 @@ import Categoriastec from "./Componentes/Categoriastec";
 import Categoriasmen from "./Componentes/Categoriasmen";
 import Categoriaswom from "./Componentes/Categoriaswom";
 import Carrito from "./Componentes/Carrito"
+import Formulario from "./Componentes/Formulario";
 
 
 function App() {
 
  let [id, setId] = useState ('')
+ let [busqueda, setBusqueda] = useState ([])
+ let [total, setTotal] = useState ('')
 
 
 
@@ -34,9 +37,11 @@ function App() {
   <Route path="/ropaMujer" element={<Categoriaswom/>}/>
   <Route path="/ropaHombre" element={<Categoriasmen/>}/>
   </Routes>
-    
-    <Carrito id={id}/>
 
+    <Carrito id={id} setId={setId}/>
+
+    <Formulario id={total} setId={setTotal}/>
+    
     <Footer/>
   
   </BrowserRouter>

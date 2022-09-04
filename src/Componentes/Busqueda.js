@@ -1,0 +1,7 @@
+
+function Busqueda () {
+    return (
+        <>
+        </>
+    )
+}

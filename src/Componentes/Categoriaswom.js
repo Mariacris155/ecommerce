@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 function Categoriaswom({setId})  {
     let [categorias, setCategorias] =useState ([])
     let [loading, setLoading] =useState ()
+    let [datos, setDatos] =useState ([])
 
  useEffect( () => {
 setLoading(true)

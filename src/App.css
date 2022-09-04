@@ -16,3 +16,10 @@
     justify-content: space-evenly;
   
   }
+
+  .listaCarrito{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+  }
