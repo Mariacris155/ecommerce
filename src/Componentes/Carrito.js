@@ -57,7 +57,7 @@ function Carrito({ id, setId }) {
     //total
     useEffect(() => {
         let total = enCarrito.map((agregados) => agregados.price * agregados.items).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        setTotal(total)
+        setTotal(parseFloat(total).toFixed(2))
     }, [enCarrito])
 
     if (loading) {

@@ -38,7 +38,7 @@ function App() {
   <Route path="/electronica" element={<Categoriastec setId={setId}/>}/>
   <Route path="/ropaMujer" element={<Categoriaswom setId={setId}/>}/>
   <Route path="/ropaHombre" element={<Categoriasmen setId={setId}/>}/>
-  {/* <Route path= "/carrito" element= {} /> Carrito estaba aqui dentro pero si lo meto se me rompe la*/}
+  {/* <Route path= "/carrito" element= {} /> Carrito estaba aqui dentro pero si lo meto se me rompe la pagina*/}
   <Route path= "/formulario" element={<Formulario /* total={total} */ />}/>
   </Routes>
   
